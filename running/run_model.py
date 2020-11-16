@@ -8,8 +8,8 @@ import yaml
 import numpy as np
 import tensorflow as tf
 
-from .meta_model import VarMisuseModel
-from .checkpoint_tracker import Tracker
+from running.meta_model import VarMisuseModel
+from running.checkpoint_tracker import Tracker
 from data import data_loader, vocabulary
 
 
