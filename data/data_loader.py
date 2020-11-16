@@ -85,7 +85,7 @@ class DataLoader():
             buffer = sorted(buffer, key=lambda b: abs(sample_len(b) - pivot))
             batch = []
             max_seq_len = 0
-            for sample in buffer:
+            for i, sample in enumerate(buffer):
                 max_seq_len = max(max_seq_len, sample_len(sample))
                 if max_seq_len * (len(batch) + 1) > self.config['max_batch_size']:
                     break
