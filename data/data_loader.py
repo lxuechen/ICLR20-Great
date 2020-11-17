@@ -95,6 +95,7 @@ class DataLoader():
             batch = list(zip(*batch))
 
             # Pad all tokens to max length using ragged tensors
+            # There's an extra dimension, since each token is processed into a list of subtokens.
             token_tensor = tf.ragged.constant(batch[0], dtype=tf.dtypes.int32).to_tensor(
                 shape=(len(batch[0]), max(len(b) for b in batch[0]), self.config["max_token_length"]))
 

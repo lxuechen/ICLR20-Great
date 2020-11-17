@@ -69,6 +69,7 @@ class VarMisuseModel(tf.keras.layers.Layer):
                 # query-key direction and add attention mask.
                 mask = tf.cast(token_mask, dtype='float32')
                 mask = tf.expand_dims(tf.expand_dims(mask, 1), 1)
+                # (edge_type, batch_entry_index, to_node, from_node).
                 attention_bias = tf.stack([edges[:, 0], edges[:, 1], edges[:, 3], edges[:, 2]], axis=1)
                 states = model(states, mask, attention_bias,
                                training=training)  # Note that plain transformers will simply ignore the attention_bias.
